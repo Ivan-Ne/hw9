@@ -1,6 +1,7 @@
 from selene import browser, have, command
 from additional_package import resource
 
+
 class RegistrationPage:
 
     def open(self):
@@ -32,15 +33,17 @@ class RegistrationPage:
         browser.element('#submit').click()
 
     def assert_registered_info(self, user):
-        browser.element('.modal-content').should(have.text(user.firstName + ' ' + user.lastName))
-        browser.element('.modal-content').should(have.text(user.userEmail))
-        browser.element('.modal-content').should(have.text(user.userGender))
-        browser.element('.modal-content').should(have.text(user.userGender))
-        browser.element('.modal-content').should(have.text('08 September,1999'))
-        browser.element('.modal-content').should(have.text(user.subject))
-        browser.element('.modal-content').should(have.text('Sports'))
-        browser.element('.modal-content').should(have.text(user.fileName))
-        browser.element('.modal-content').should(have.text(user.currentAddress))
-        browser.element('.modal-content').should(have.text(user.state + ' ' + user.city))
+        browser.element('.table').all('td').even.should(have.exact_texts(user.firstName + ' ' + user.lastName,
+                                                                         user.userEmail,
+                                                                         user.userGender,
+                                                                         user.userNumber,
+                                                                         '08 September,1999',
+                                                                         user.subject,
+                                                                         'Sports',
+                                                                         user.fileName,
+                                                                         user.currentAddress,
+                                                                         user.state + ' ' + user.city
+                                                                         ))
+
 
 registration_page = RegistrationPage()
