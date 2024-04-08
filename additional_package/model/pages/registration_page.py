@@ -1,6 +1,7 @@
 from selene import browser, have, command
 from additional_package import resource
 
+
 class RegistrationPage:
 
     def open(self):
@@ -68,5 +69,6 @@ class RegistrationPage:
                                                                          address,
                                                                          state_and_city
                                                                          ))
+
 
 registration_page = RegistrationPage()

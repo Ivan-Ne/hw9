@@ -1,5 +1,6 @@
 from additional_package.model.pages.registration_page import registration_page
 
+
 def test_fill_form(browser_personal_settings):
     registration_page.open()
     registration_page.fill_first_name('Ivan')
