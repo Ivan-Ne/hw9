@@ -1,5 +1,4 @@
-from selene import have, command
-from selene.support.shared import browser
+from selene import browser, have, command
 from additional_package import resource
 
 class RegistrationPage:
@@ -56,14 +55,18 @@ class RegistrationPage:
     def submit_registration(self):
         browser.element('#submit').click()
 
-    def assert_registered_info(self, name, email, sex, number, birthday, subject, hobby, file_name, address, state_and_city):
-        browser.element('[class="modal-content"]').should(have.text(name))
-        browser.element('[class="modal-content"]').should(have.text(email))
-        browser.element('[class="modal-content"]').should(have.text(sex))
-        browser.element('[class="modal-content"]').should(have.text(number))
-        browser.element('[class="modal-content"]').should(have.text(birthday))
-        browser.element('[class="modal-content"]').should(have.text(subject))
-        browser.element('[class="modal-content"]').should(have.text(hobby))
-        browser.element('[class="modal-content"]').should(have.text(file_name))
-        browser.element('[class="modal-content"]').should(have.text(address))
-        browser.element('[class="modal-content"]').should(have.text(state_and_city))
+    def assert_registered_info(self, name, email, sex, number, birthday, subject, hobby, file_name, address,
+                               state_and_city):
+        browser.element('.table').all('td').even.should(have.exact_texts(name,
+                                                                         email,
+                                                                         sex,
+                                                                         number,
+                                                                         birthday,
+                                                                         subject,
+                                                                         hobby,
+                                                                         file_name,
+                                                                         address,
+                                                                         state_and_city
+                                                                         ))
+
+registration_page = RegistrationPage()

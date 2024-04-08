@@ -1,10 +1,6 @@
-from selene import browser, have, command
-from additional_package.model.pages.registration_page import RegistrationPage
-from additional_package import resource
-
+from additional_package.model.pages.registration_page import registration_page
 
 def test_fill_form(browser_personal_settings):
-    registration_page = RegistrationPage()
     registration_page.open()
     registration_page.fill_first_name('Ivan')
     registration_page.fill_lastname('Neverov')
